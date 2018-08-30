@@ -6,7 +6,7 @@
     "description": "An API for managing simulations within 3DSIM.",
     "termsOfService": "https://3dsim.com",
     "contact": {
-      "name": "3DSIM API Team",
+      "name": "ANSYS Additive Cloud API Team",
       "email": "support@3dsim.com",
       "url": "https://3dsim.github.io"
     },
@@ -7111,6 +7111,13 @@
           "items": {
             "type": "number"
           }
+        },
+        "meshLayersPerLayer": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Number of mesh layers used to simulate a single deposit layer"
         }
       }
     },
@@ -7427,6 +7434,12 @@
             "Generated",
             "UserDefined"
           ]
+        },
+        "voxelSampleRate": {
+          "description": "the amount of sub voxels per voxel in each direction (x,y,z)",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 10
         }
       }
     },

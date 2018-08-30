@@ -7437,7 +7437,8 @@
         },
         "voxelSampleRate": {
           "description": "the amount of sub voxels per voxel in each direction (x,y,z)",
-          "type": "number",
+          "type": "integer",
+          "format": "int32",
           "minimum": 1,
           "maximum": 10
         }

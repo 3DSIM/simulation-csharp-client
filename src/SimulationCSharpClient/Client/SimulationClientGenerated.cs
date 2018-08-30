@@ -16089,7 +16089,7 @@ namespace SimulationCSharpClient.Client
         private bool? _performDistortionCompensationAfterCutoff;
         private double? _distortionAfterCutoffScaleFactor;
         private PartBasedSimulationParametersSupportType _supportType;
-        private double? _voxelSampleRate;
+        private int? _voxelSampleRate;
     
         /// <summary>List of parts to simulate (current limit is one part, imposed by server)</summary>
         [Newtonsoft.Json.JsonProperty("simulationParts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -16634,7 +16634,7 @@ namespace SimulationCSharpClient.Client
         /// <summary>the amount of sub voxels per voxel in each direction (x,y,z)</summary>
         [Newtonsoft.Json.JsonProperty("voxelSampleRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.Range(1, 10)]
-        public double? VoxelSampleRate
+        public int? VoxelSampleRate
         {
             get { return _voxelSampleRate; }
             set 
@@ -16959,7 +16959,7 @@ namespace SimulationCSharpClient.Client
         private bool? _performDistortionCompensationAfterCutoff;
         private double? _distortionAfterCutoffScaleFactor;
         private PartBasedSimulationParametersSupportType _supportType;
-        private double? _voxelSampleRate;
+        private int? _voxelSampleRate;
         private double? _layerThickness;
     
         /// <summary>List of parts to simulate (current limit is one part, imposed by server)</summary>
@@ -17505,7 +17505,7 @@ namespace SimulationCSharpClient.Client
         /// <summary>the amount of sub voxels per voxel in each direction (x,y,z)</summary>
         [Newtonsoft.Json.JsonProperty("voxelSampleRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.Range(1, 10)]
-        public double? VoxelSampleRate
+        public int? VoxelSampleRate
         {
             get { return _voxelSampleRate; }
             set 
@@ -18117,7 +18117,7 @@ namespace SimulationCSharpClient.Client
         private bool? _performDistortionCompensationAfterCutoff;
         private double? _distortionAfterCutoffScaleFactor;
         private PartBasedSimulationParametersSupportType _supportType;
-        private double? _voxelSampleRate;
+        private int? _voxelSampleRate;
         private double _layerThickness;
         private double _hatchSpacing;
         private double _laserWattage;
@@ -18693,7 +18693,7 @@ namespace SimulationCSharpClient.Client
         /// <summary>the amount of sub voxels per voxel in each direction (x,y,z)</summary>
         [Newtonsoft.Json.JsonProperty("voxelSampleRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.Range(1, 10)]
-        public double? VoxelSampleRate
+        public int? VoxelSampleRate
         {
             get { return _voxelSampleRate; }
             set 
@@ -19369,7 +19369,7 @@ namespace SimulationCSharpClient.Client
         private bool? _performDistortionCompensationAfterCutoff;
         private double? _distortionAfterCutoffScaleFactor;
         private PartBasedSimulationParametersSupportType _supportType;
-        private double? _voxelSampleRate;
+        private int? _voxelSampleRate;
         private double _layerThickness;
         private double _startingLayerAngle;
         private double _layerRotationAngle;
@@ -19921,7 +19921,7 @@ namespace SimulationCSharpClient.Client
         /// <summary>the amount of sub voxels per voxel in each direction (x,y,z)</summary>
         [Newtonsoft.Json.JsonProperty("voxelSampleRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.Range(1, 10)]
-        public double? VoxelSampleRate
+        public int? VoxelSampleRate
         {
             get { return _voxelSampleRate; }
             set 
@@ -24572,7 +24572,7 @@ namespace SimulationCSharpClient.Client
         private bool? _performDistortionCompensationAfterCutoff;
         private double? _distortionAfterCutoffScaleFactor;
         private PartBasedSimulationParametersSupportType _supportType;
-        private double? _voxelSampleRate;
+        private int? _voxelSampleRate;
         private double _layerThickness;
         private double _hatchSpacing;
         private double _laserWattage;
@@ -25128,7 +25128,7 @@ namespace SimulationCSharpClient.Client
         /// <summary>the amount of sub voxels per voxel in each direction (x,y,z)</summary>
         [Newtonsoft.Json.JsonProperty("voxelSampleRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.Range(1, 10)]
-        public double? VoxelSampleRate
+        public int? VoxelSampleRate
         {
             get { return _voxelSampleRate; }
             set 

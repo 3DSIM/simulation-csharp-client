@@ -22255,7 +22255,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        [Newtonsoft.Json.JsonProperty("W0LowerBound", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("w0LowerBound", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? W0LowerBound
         {
             get { return _w0LowerBound; }
@@ -22269,7 +22269,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        [Newtonsoft.Json.JsonProperty("W0UpperBound", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("w0UpperBound", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? W0UpperBound
         {
             get { return _w0UpperBound; }
@@ -22284,7 +22284,7 @@ namespace SimulationCSharpClient.Client
         }
     
         /// <summary>Location where tuning method lookup file is stored. Set server side. Only used internally.</summary>
-        [Newtonsoft.Json.JsonProperty("W0LookupFileLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("w0LookupFileLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string W0LookupFileLocation
         {
             get { return _w0LookupFileLocation; }

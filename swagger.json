@@ -8397,15 +8397,15 @@
           "type": "number",
           "format": "double"
         },
-        "W0LowerBound": {
+        "w0LowerBound": {
           "type": "number",
           "format": "double"
         },
-        "W0UpperBound": {
+        "w0UpperBound": {
           "type": "number",
           "format": "double"
         },
-        "W0LookupFileLocation": {
+        "w0LookupFileLocation": {
           "type": "string",
           "description": "Location where tuning method lookup file is stored. Set server side. Only used internally."
         }

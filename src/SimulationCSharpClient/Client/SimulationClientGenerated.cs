@@ -159,7 +159,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
         /// <param name="limit">number of items to return within the query</param>
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
-        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.</param>
+        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
         /// <param name="archived">If true, will only return archived parts.  If false, will only return unarchived parts.  If not provided, will return both archived and unarchived parts.</param>
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -169,7 +169,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
         /// <param name="limit">number of items to return within the query</param>
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
-        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.</param>
+        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
         /// <param name="archived">If true, will only return archived parts.  If false, will only return unarchived parts.  If not provided, will return both archived and unarchived parts.</param>
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -2875,7 +2875,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
         /// <param name="limit">number of items to return within the query</param>
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
-        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.</param>
+        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
         /// <param name="archived">If true, will only return archived parts.  If false, will only return unarchived parts.  If not provided, will return both archived and unarchived parts.</param>
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -2888,7 +2888,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
         /// <param name="limit">number of items to return within the query</param>
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
-        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.</param>
+        /// <param name="availability">If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
         /// <param name="archived">If true, will only return archived parts.  If false, will only return unarchived parts.  If not provided, will return both archived and unarchived parts.</param>
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -20510,7 +20510,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Describes the availabity of the part. Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.</summary>
+        /// <summary>Describes the availabity of the part. Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</summary>
         [Newtonsoft.Json.JsonProperty("availability", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public PartAvailability? Availability
@@ -21988,7 +21988,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Location where the lookup file is stored in S3.  Set server side.  Only used internally within 3DSIM.</summary>
+        /// <summary>Location where the lookup file is stored.  Set server side.  Only used internally.</summary>
         [Newtonsoft.Json.JsonProperty("lookupFileLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LookupFileLocation
         {
@@ -22283,7 +22283,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Location where the lookup file for new tuning method is stored in S3.  Set server side.  Only used internally within Ansys.</summary>
+        /// <summary>Location where tuning method lookup file is stored. Set server side. Only used internally.</summary>
         [Newtonsoft.Json.JsonProperty("W0LookupFileLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string W0LookupFileLocation
         {
@@ -25647,7 +25647,7 @@ namespace SimulationCSharpClient.Client
         }
     }
     
-    /// <summary>If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.</summary>
+    /// <summary>If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
     public enum Availability
     {

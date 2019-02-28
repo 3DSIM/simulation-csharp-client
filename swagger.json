@@ -738,7 +738,7 @@
           {
             "name": "availability",
             "in": "query",
-            "description": "If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.",
+            "description": "If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.",
             "required": false,
             "type": "string",
             "enum": [
@@ -7850,7 +7850,7 @@
           "description": "File name of part relative to fileBucket"
         },
         "availability": {
-          "description": "Describes the availabity of the part. Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact support@3dsim.com.",
+          "description": "Describes the availabity of the part. Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.",
           "type": "string",
           "enum": [
             "Uploaded",
@@ -8323,7 +8323,7 @@
         },
         "lookupFileLocation": {
           "type": "string",
-          "description": "Location where the lookup file is stored in S3.  Set server side.  Only used internally within 3DSIM."
+          "description": "Location where the lookup file is stored.  Set server side.  Only used internally."
         },
         "capTemperatureLaserSpeedCoef": {
           "type": "number",
@@ -8407,7 +8407,7 @@
         },
         "W0LookupFileLocation": {
           "type": "string",
-          "description": "Location where the lookup file for new tuning method is stored in S3.  Set server side.  Only used internally within Ansys."
+          "description": "Location where tuning method lookup file is stored. Set server side. Only used internally."
         }
       }
     },

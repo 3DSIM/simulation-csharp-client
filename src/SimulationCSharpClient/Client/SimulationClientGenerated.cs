@@ -21409,6 +21409,18 @@ namespace SimulationCSharpClient.Client
         private double _laserPowerUpperBound;
         private double _hardeningFactor;
         private double _nucleationConstant;
+        private double? _penetrationDepthPowderCoeffA;
+        private double? _penetrationDepthPowderCoeffB;
+        private double? _penetrationDepthSolidCoeffA;
+        private double? _penetrationDepthSolidCoeffB;
+        private double? _absorptivityPowderCoeffA;
+        private double? _absorptivityPowderCoeffB;
+        private double? _absorptivitySolidCoeffA;
+        private double? _absorptivitySolidCoeffB;
+        private double? _absorptivityMinimum;
+        private double? _w0LowerBound;
+        private double? _w0UpperBound;
+        private string _w0LookupFileLocation;
     
         /// <summary>material configuration identifier</summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -22112,6 +22124,175 @@ namespace SimulationCSharpClient.Client
                 if (_nucleationConstant != value)
                 {
                     _nucleationConstant = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("penetrationDepthPowderCoeffA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? PenetrationDepthPowderCoeffA
+        {
+            get { return _penetrationDepthPowderCoeffA; }
+            set 
+            {
+                if (_penetrationDepthPowderCoeffA != value)
+                {
+                    _penetrationDepthPowderCoeffA = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("penetrationDepthPowderCoeffB", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? PenetrationDepthPowderCoeffB
+        {
+            get { return _penetrationDepthPowderCoeffB; }
+            set 
+            {
+                if (_penetrationDepthPowderCoeffB != value)
+                {
+                    _penetrationDepthPowderCoeffB = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("penetrationDepthSolidCoeffA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? PenetrationDepthSolidCoeffA
+        {
+            get { return _penetrationDepthSolidCoeffA; }
+            set 
+            {
+                if (_penetrationDepthSolidCoeffA != value)
+                {
+                    _penetrationDepthSolidCoeffA = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("penetrationDepthSolidCoeffB", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? PenetrationDepthSolidCoeffB
+        {
+            get { return _penetrationDepthSolidCoeffB; }
+            set 
+            {
+                if (_penetrationDepthSolidCoeffB != value)
+                {
+                    _penetrationDepthSolidCoeffB = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("absorptivityPowderCoeffA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? AbsorptivityPowderCoeffA
+        {
+            get { return _absorptivityPowderCoeffA; }
+            set 
+            {
+                if (_absorptivityPowderCoeffA != value)
+                {
+                    _absorptivityPowderCoeffA = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("absorptivityPowderCoeffB", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? AbsorptivityPowderCoeffB
+        {
+            get { return _absorptivityPowderCoeffB; }
+            set 
+            {
+                if (_absorptivityPowderCoeffB != value)
+                {
+                    _absorptivityPowderCoeffB = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("absorptivitySolidCoeffA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? AbsorptivitySolidCoeffA
+        {
+            get { return _absorptivitySolidCoeffA; }
+            set 
+            {
+                if (_absorptivitySolidCoeffA != value)
+                {
+                    _absorptivitySolidCoeffA = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("absorptivitySolidCoeffB", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? AbsorptivitySolidCoeffB
+        {
+            get { return _absorptivitySolidCoeffB; }
+            set 
+            {
+                if (_absorptivitySolidCoeffB != value)
+                {
+                    _absorptivitySolidCoeffB = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("absorptivityMinimum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? AbsorptivityMinimum
+        {
+            get { return _absorptivityMinimum; }
+            set 
+            {
+                if (_absorptivityMinimum != value)
+                {
+                    _absorptivityMinimum = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("W0LowerBound", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? W0LowerBound
+        {
+            get { return _w0LowerBound; }
+            set 
+            {
+                if (_w0LowerBound != value)
+                {
+                    _w0LowerBound = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("W0UpperBound", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? W0UpperBound
+        {
+            get { return _w0UpperBound; }
+            set 
+            {
+                if (_w0UpperBound != value)
+                {
+                    _w0UpperBound = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>Location where the lookup file for new tuning method is stored in S3.  Set server side.  Only used internally within Ansys.</summary>
+        [Newtonsoft.Json.JsonProperty("W0LookupFileLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string W0LookupFileLocation
+        {
+            get { return _w0LookupFileLocation; }
+            set 
+            {
+                if (_w0LookupFileLocation != value)
+                {
+                    _w0LookupFileLocation = value; 
                     RaisePropertyChanged();
                 }
             }

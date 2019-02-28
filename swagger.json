@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.30.0",
+    "version": "3.31.0",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -8360,6 +8360,54 @@
         "nucleationConstant": {
           "type": "number",
           "format": "double"
+        },
+        "penetrationDepthPowderCoeffA": {
+          "type": "number",
+          "format": "double"
+        },
+        "penetrationDepthPowderCoeffB": {
+          "type": "number",
+          "format": "double"
+        },
+        "penetrationDepthSolidCoeffA": {
+          "type": "number",
+          "format": "double"
+        },
+        "penetrationDepthSolidCoeffB": {
+          "type": "number",
+          "format": "double"
+        },
+        "absorptivityPowderCoeffA": {
+          "type": "number",
+          "format": "double"
+        },
+        "absorptivityPowderCoeffB": {
+          "type": "number",
+          "format": "double"
+        },
+        "absorptivitySolidCoeffA": {
+          "type": "number",
+          "format": "double"
+        },
+        "absorptivitySolidCoeffB": {
+          "type": "number",
+          "format": "double"
+        },
+        "absorptivityMinimum": {
+          "type": "number",
+          "format": "double"
+        },
+        "W0LowerBound": {
+          "type": "number",
+          "format": "double"
+        },
+        "W0UpperBound": {
+          "type": "number",
+          "format": "double"
+        },
+        "W0LookupFileLocation": {
+          "type": "string",
+          "description": "Location where the lookup file for new tuning method is stored in S3.  Set server side.  Only used internally within Ansys."
         }
       }
     },

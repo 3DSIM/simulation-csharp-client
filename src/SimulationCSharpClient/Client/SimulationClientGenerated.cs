@@ -27789,6 +27789,9 @@ namespace SimulationCSharpClient.Client
         [System.Runtime.Serialization.EnumMember(Value = "ThreeDSystems")]
         ThreeDSystems = 3,
     
+        [System.Runtime.Serialization.EnumMember(Value = "EOS")]
+        EOS = 4,
+    
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]

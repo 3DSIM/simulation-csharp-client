@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.56.0",
+    "version": "3.57.0",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -8520,49 +8520,22 @@
         "materialId",
         "created",
         "createdBy",
-        "extinctionCoefOfPowderLaserSpeedCoef",
-        "extinctionCoefOfPowderLaserPowerCoef",
-        "extinctionCoefOfPowderOffset",
-        "extinctionCoefOfSolidLaserSpeedCoef",
-        "extinctionCoefOfSolidLaserPowerCoef",
-        "extinctionCoefOfSolidOffset",
-        "powderToSolidThermalConductivityRatio",
-        "powderToSolidSpecificHeatRatio",
-        "powderToSolidDensityRatio",
         "solidThermalConductivityAtRoomTemperature",
         "solidDensityAtRoomTemperature",
         "solidSpecificHeatAtRoomTemperature",
-        "vaporizationLatentHeat",
-        "fusionLatentHeat",
         "purgingGasConvectionCoefficient",
         "solidusTemperature",
         "liquidusTemperature",
         "vaporizationTemperature",
-        "vaporizationStartTemperature",
-        "solidStateTransitionTemperature",
-        "energyAbsorbingRateByPowder",
-        "energyAbsorbingRateBySolid",
         "thermalExpansionCoefficient",
         "elasticModulus",
         "elasticModulusOfBase",
         "poissonRatio",
         "materialYieldStrength",
         "supportYieldStrengthRatio",
-        "materialStrainSensitivity",
-        "surfaceTension",
-        "atomicWeight",
-        "assumedStrain",
-        "strainPlasticityRelaxationFactor",
         "anisotropicStrainCoefficientParallel",
         "anisotropicStrainCoefficientPerpendicular",
         "anisotropicStrainCoefficientZ",
-        "capTemperatureLaserSpeedCoef",
-        "capTemperatureLaserPowerCoef",
-        "capTemperatureOffset",
-        "laserSpeedLowerBound",
-        "laserSpeedUpperBound",
-        "laserPowerLowerBound",
-        "laserPowerUpperBound",
         "hardeningFactor",
         "nucleationConstantInterface",
         "nucleationConstantBulk"
@@ -8587,42 +8560,6 @@
           "type": "string",
           "description": "creating user, set server-side, read only field"
         },
-        "extinctionCoefOfPowderLaserSpeedCoef": {
-          "type": "number",
-          "format": "double"
-        },
-        "extinctionCoefOfPowderLaserPowerCoef": {
-          "type": "number",
-          "format": "double"
-        },
-        "extinctionCoefOfPowderOffset": {
-          "type": "number",
-          "format": "double"
-        },
-        "extinctionCoefOfSolidLaserSpeedCoef": {
-          "type": "number",
-          "format": "double"
-        },
-        "extinctionCoefOfSolidLaserPowerCoef": {
-          "type": "number",
-          "format": "double"
-        },
-        "extinctionCoefOfSolidOffset": {
-          "type": "number",
-          "format": "double"
-        },
-        "powderToSolidThermalConductivityRatio": {
-          "type": "number",
-          "format": "double"
-        },
-        "powderToSolidSpecificHeatRatio": {
-          "type": "number",
-          "format": "double"
-        },
-        "powderToSolidDensityRatio": {
-          "type": "number",
-          "format": "double"
-        },
         "solidThermalConductivityAtRoomTemperature": {
           "type": "number",
           "format": "double"
@@ -8632,14 +8569,6 @@
           "format": "double"
         },
         "solidSpecificHeatAtRoomTemperature": {
-          "type": "number",
-          "format": "double"
-        },
-        "vaporizationLatentHeat": {
-          "type": "number",
-          "format": "double"
-        },
-        "fusionLatentHeat": {
           "type": "number",
           "format": "double"
         },
@@ -8656,22 +8585,6 @@
           "format": "double"
         },
         "vaporizationTemperature": {
-          "type": "number",
-          "format": "double"
-        },
-        "vaporizationStartTemperature": {
-          "type": "number",
-          "format": "double"
-        },
-        "solidStateTransitionTemperature": {
-          "type": "number",
-          "format": "double"
-        },
-        "energyAbsorbingRateByPowder": {
-          "type": "number",
-          "format": "double"
-        },
-        "energyAbsorbingRateBySolid": {
           "type": "number",
           "format": "double"
         },
@@ -8699,26 +8612,6 @@
           "type": "number",
           "format": "double"
         },
-        "materialStrainSensitivity": {
-          "type": "number",
-          "format": "double"
-        },
-        "surfaceTension": {
-          "type": "number",
-          "format": "double"
-        },
-        "atomicWeight": {
-          "type": "number",
-          "format": "double"
-        },
-        "assumedStrain": {
-          "type": "number",
-          "format": "double"
-        },
-        "strainPlasticityRelaxationFactor": {
-          "type": "number",
-          "format": "double"
-        },
         "anisotropicStrainCoefficientParallel": {
           "type": "number",
           "format": "double"
@@ -8734,34 +8627,6 @@
         "lookupFileLocation": {
           "type": "string",
           "description": "Location where the lookup file is stored.  Set server side.  Only used internally."
-        },
-        "capTemperatureLaserSpeedCoef": {
-          "type": "number",
-          "format": "double"
-        },
-        "capTemperatureLaserPowerCoef": {
-          "type": "number",
-          "format": "double"
-        },
-        "capTemperatureOffset": {
-          "type": "number",
-          "format": "double"
-        },
-        "laserSpeedLowerBound": {
-          "type": "number",
-          "format": "double"
-        },
-        "laserSpeedUpperBound": {
-          "type": "number",
-          "format": "double"
-        },
-        "laserPowerLowerBound": {
-          "type": "number",
-          "format": "double"
-        },
-        "laserPowerUpperBound": {
-          "type": "number",
-          "format": "double"
         },
         "hardeningFactor": {
           "type": "number",

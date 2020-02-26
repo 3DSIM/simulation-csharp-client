@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.57.0",
+    "version": "3.58.0",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -7906,7 +7906,25 @@
           "type": "string",
           "enum": [
             "Legacy",
-            "Instantaneous"
+            "Instantaneous",
+            "Directional"
+          ]
+        },
+        "directionCutoffSteps": {
+          "description": "The amount of steps MAPDL will use for directional cut off",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "directionalCutoffDirection": {
+          "description": "The direction of the MAPDL directional cut off",
+          "type": "string",
+          "enum": [
+            "POS_X",
+            "NEG_X",
+            "POS_Y",
+            "NEG_Y"
           ]
         }
       }

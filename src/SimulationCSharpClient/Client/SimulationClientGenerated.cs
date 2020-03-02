@@ -17214,6 +17214,8 @@ namespace SimulationCSharpClient.Client
         private double? _positionedPartOffsetY;
         private double? _positionedPartOffsetZ;
         private PartBasedSimulationParametersCutoffMethod _cutoffMethod;
+        private int? _directionCutoffSteps;
+        private PartBasedSimulationParametersDirectionalCutoffDirection? _directionalCutoffDirection;
     
         /// <summary>List of parts to simulate (current limit is one part, imposed by server)</summary>
         [Newtonsoft.Json.JsonProperty("simulationParts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -17964,6 +17966,38 @@ namespace SimulationCSharpClient.Client
                 if (_cutoffMethod != value)
                 {
                     _cutoffMethod = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The amount of steps MAPDL will use for directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionCutoffSteps", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.Range(1, 2147483647)]
+        public int? DirectionCutoffSteps
+        {
+            get { return _directionCutoffSteps; }
+            set 
+            {
+                if (_directionCutoffSteps != value)
+                {
+                    _directionCutoffSteps = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The direction of the MAPDL directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionalCutoffDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public PartBasedSimulationParametersDirectionalCutoffDirection? DirectionalCutoffDirection
+        {
+            get { return _directionalCutoffDirection; }
+            set 
+            {
+                if (_directionalCutoffDirection != value)
+                {
+                    _directionalCutoffDirection = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -18083,6 +18117,8 @@ namespace SimulationCSharpClient.Client
         private double? _positionedPartOffsetY;
         private double? _positionedPartOffsetZ;
         private PartBasedSimulationParametersCutoffMethod _cutoffMethod;
+        private int? _directionCutoffSteps;
+        private PartBasedSimulationParametersDirectionalCutoffDirection? _directionalCutoffDirection;
         private double? _layerThickness;
     
         /// <summary>List of parts to simulate (current limit is one part, imposed by server)</summary>
@@ -18834,6 +18870,38 @@ namespace SimulationCSharpClient.Client
                 if (_cutoffMethod != value)
                 {
                     _cutoffMethod = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The amount of steps MAPDL will use for directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionCutoffSteps", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.Range(1, 2147483647)]
+        public int? DirectionCutoffSteps
+        {
+            get { return _directionCutoffSteps; }
+            set 
+            {
+                if (_directionCutoffSteps != value)
+                {
+                    _directionCutoffSteps = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The direction of the MAPDL directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionalCutoffDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public PartBasedSimulationParametersDirectionalCutoffDirection? DirectionalCutoffDirection
+        {
+            get { return _directionalCutoffDirection; }
+            set 
+            {
+                if (_directionalCutoffDirection != value)
+                {
+                    _directionalCutoffDirection = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -19486,6 +19554,8 @@ namespace SimulationCSharpClient.Client
         private double? _positionedPartOffsetY;
         private double? _positionedPartOffsetZ;
         private PartBasedSimulationParametersCutoffMethod _cutoffMethod;
+        private int? _directionCutoffSteps;
+        private PartBasedSimulationParametersDirectionalCutoffDirection? _directionalCutoffDirection;
         private double _layerThickness;
         private double _hatchSpacing;
         private double _laserWattage;
@@ -20269,6 +20339,38 @@ namespace SimulationCSharpClient.Client
                 if (_cutoffMethod != value)
                 {
                     _cutoffMethod = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The amount of steps MAPDL will use for directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionCutoffSteps", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.Range(1, 2147483647)]
+        public int? DirectionCutoffSteps
+        {
+            get { return _directionCutoffSteps; }
+            set 
+            {
+                if (_directionCutoffSteps != value)
+                {
+                    _directionCutoffSteps = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The direction of the MAPDL directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionalCutoffDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public PartBasedSimulationParametersDirectionalCutoffDirection? DirectionalCutoffDirection
+        {
+            get { return _directionalCutoffDirection; }
+            set 
+            {
+                if (_directionalCutoffDirection != value)
+                {
+                    _directionalCutoffDirection = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -20983,6 +21085,8 @@ namespace SimulationCSharpClient.Client
         private double? _positionedPartOffsetY;
         private double? _positionedPartOffsetZ;
         private PartBasedSimulationParametersCutoffMethod _cutoffMethod;
+        private int? _directionCutoffSteps;
+        private PartBasedSimulationParametersDirectionalCutoffDirection? _directionalCutoffDirection;
         private double _layerThickness;
         private double _startingLayerAngle;
         private double _layerRotationAngle;
@@ -21740,6 +21844,38 @@ namespace SimulationCSharpClient.Client
                 if (_cutoffMethod != value)
                 {
                     _cutoffMethod = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The amount of steps MAPDL will use for directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionCutoffSteps", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.Range(1, 2147483647)]
+        public int? DirectionCutoffSteps
+        {
+            get { return _directionCutoffSteps; }
+            set 
+            {
+                if (_directionCutoffSteps != value)
+                {
+                    _directionCutoffSteps = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>The direction of the MAPDL directional cut off</summary>
+        [Newtonsoft.Json.JsonProperty("directionalCutoffDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public PartBasedSimulationParametersDirectionalCutoffDirection? DirectionalCutoffDirection
+        {
+            get { return _directionalCutoffDirection; }
+            set 
+            {
+                if (_directionalCutoffDirection != value)
+                {
+                    _directionalCutoffDirection = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -27943,6 +28079,26 @@ namespace SimulationCSharpClient.Client
     
         [System.Runtime.Serialization.EnumMember(Value = "Instantaneous")]
         Instantaneous = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Directional")]
+        Directional = 2,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum PartBasedSimulationParametersDirectionalCutoffDirection
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "POS_X")]
+        POS_X = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "NEG_X")]
+        NEG_X = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "POS_Y")]
+        POS_Y = 2,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "NEG_Y")]
+        NEG_Y = 3,
     
     }
     

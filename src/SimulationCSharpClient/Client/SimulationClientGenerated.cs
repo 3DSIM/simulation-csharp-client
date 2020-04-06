@@ -50,22 +50,22 @@ namespace SimulationCSharpClient.Client
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         System.Threading.Tasks.Task<Material> AddMaterialAsync(Material material, System.Threading.CancellationToken cancellationToken);
     
-        /// <param name="lookup">csv file defining columns T(in Kelvins), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
-        /// <param name="w0lookup">csv file defining columns Speed (mm/s), Power (W), W0 (m)</param>
+        /// <param name="lookup">csv file defining columns Temperature (K), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
+        /// <param name="cwlookup">csv file defining columns Speed (mm/s), Power (W), CW (m)</param>
         /// <param name="configuration">configuration defining material scientific specification, each field name must match expected material data template</param>
         /// <param name="customMaterialPost">json formatted data to generate the material -  schema /definitions/CustomMaterialPost</param>
         /// <returns>material response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter w0lookup, FileParameter configuration, string customMaterialPost);
+        System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter cwlookup, FileParameter configuration, string customMaterialPost);
     
-        /// <param name="lookup">csv file defining columns T(in Kelvins), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
-        /// <param name="w0lookup">csv file defining columns Speed (mm/s), Power (W), W0 (m)</param>
+        /// <param name="lookup">csv file defining columns Temperature (K), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
+        /// <param name="cwlookup">csv file defining columns Speed (mm/s), Power (W), CW (m)</param>
         /// <param name="configuration">configuration defining material scientific specification, each field name must match expected material data template</param>
         /// <param name="customMaterialPost">json formatted data to generate the material -  schema /definitions/CustomMaterialPost</param>
         /// <returns>material response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter w0lookup, FileParameter configuration, string customMaterialPost, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter cwlookup, FileParameter configuration, string customMaterialPost, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">ID of material to fetch</param>
         /// <returns>material response</returns>
@@ -1840,25 +1840,25 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <param name="lookup">csv file defining columns T(in Kelvins), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
-        /// <param name="w0lookup">csv file defining columns Speed (mm/s), Power (W), W0 (m)</param>
+        /// <param name="lookup">csv file defining columns Temperature (K), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
+        /// <param name="cwlookup">csv file defining columns Speed (mm/s), Power (W), CW (m)</param>
         /// <param name="configuration">configuration defining material scientific specification, each field name must match expected material data template</param>
         /// <param name="customMaterialPost">json formatted data to generate the material -  schema /definitions/CustomMaterialPost</param>
         /// <returns>material response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter w0lookup, FileParameter configuration, string customMaterialPost)
+        public System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter cwlookup, FileParameter configuration, string customMaterialPost)
         {
-            return AddCustomMaterialAsync(lookup, w0lookup, configuration, customMaterialPost, System.Threading.CancellationToken.None);
+            return AddCustomMaterialAsync(lookup, cwlookup, configuration, customMaterialPost, System.Threading.CancellationToken.None);
         }
     
-        /// <param name="lookup">csv file defining columns T(in Kelvins), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
-        /// <param name="w0lookup">csv file defining columns Speed (mm/s), Power (W), W0 (m)</param>
+        /// <param name="lookup">csv file defining columns Temperature (K), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio</param>
+        /// <param name="cwlookup">csv file defining columns Speed (mm/s), Power (W), CW (m)</param>
         /// <param name="configuration">configuration defining material scientific specification, each field name must match expected material data template</param>
         /// <param name="customMaterialPost">json formatted data to generate the material -  schema /definitions/CustomMaterialPost</param>
         /// <returns>material response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter w0lookup, FileParameter configuration, string customMaterialPost, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Material> AddCustomMaterialAsync(FileParameter lookup, FileParameter cwlookup, FileParameter configuration, string customMaterialPost, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/materials/custom");
@@ -1876,10 +1876,10 @@ namespace SimulationCSharpClient.Client
                         throw new System.ArgumentNullException("lookup");
                     else
                         content_.Add(new System.Net.Http.StreamContent(lookup.Data), "lookup", lookup.FileName ?? "lookup");
-                    if (w0lookup == null)
-                        throw new System.ArgumentNullException("w0lookup");
+                    if (cwlookup == null)
+                        throw new System.ArgumentNullException("cwlookup");
                     else
-                        content_.Add(new System.Net.Http.StreamContent(w0lookup.Data), "w0lookup", w0lookup.FileName ?? "w0lookup");
+                        content_.Add(new System.Net.Http.StreamContent(cwlookup.Data), "cwlookup", cwlookup.FileName ?? "cwlookup");
                     if (configuration == null)
                         throw new System.ArgumentNullException("configuration");
                     else
@@ -16374,7 +16374,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>heater temperature in degrees kelvin</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperature", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(293D, 474D)]
+        [System.ComponentModel.DataAnnotations.Range(293.15D, 773.15D)]
         public double? HeaterTemperature
         {
             get { return _heaterTemperature; }
@@ -16390,7 +16390,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -16619,7 +16619,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>heater temperature in degrees kelvin</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperature", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(293D, 474D)]
+        [System.ComponentModel.DataAnnotations.Range(293.15D, 773.15D)]
         public double? HeaterTemperature
         {
             get { return _heaterTemperature; }
@@ -16635,7 +16635,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -16865,7 +16865,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>heater temperature in degrees kelvin</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperature", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(293D, 474D)]
+        [System.ComponentModel.DataAnnotations.Range(293.15D, 773.15D)]
         public double? HeaterTemperature
         {
             get { return _heaterTemperature; }
@@ -16881,7 +16881,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -17111,7 +17111,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>heater temperature in degrees kelvin</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperature", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(293D, 474D)]
+        [System.ComponentModel.DataAnnotations.Range(293.15D, 773.15D)]
         public double? HeaterTemperature
         {
             get { return _heaterTemperature; }
@@ -17127,7 +17127,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -19012,9 +19012,9 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Must be between 10 to 1000 watts</summary>
+        /// <summary>Must be between 50 to 700 watts</summary>
         [Newtonsoft.Json.JsonProperty("laserWattage", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(10, 1000)]
+        [System.ComponentModel.DataAnnotations.Range(50, 700)]
         public double LaserWattage
         {
             get { return _laserWattage; }
@@ -19028,9 +19028,9 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Must be between 0.01 to 10 meters/second</summary>
+        /// <summary>Must be between 0.35 to 2.5 meters/second</summary>
         [Newtonsoft.Json.JsonProperty("scanSpeed", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(0, 10)]
+        [System.ComponentModel.DataAnnotations.Range(0, 2)]
         public double ScanSpeed
         {
             get { return _scanSpeed; }
@@ -19252,7 +19252,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>heater temperature in degrees kelvin</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperature", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(293D, 474D)]
+        [System.ComponentModel.DataAnnotations.Range(293.15D, 773.15D)]
         public double? HeaterTemperature
         {
             get { return _heaterTemperature; }
@@ -19467,7 +19467,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -20408,9 +20408,9 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Must be between 10 to 1000 watts</summary>
+        /// <summary>Must be between 50 to 700 watts</summary>
         [Newtonsoft.Json.JsonProperty("laserWattage", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(10, 1000)]
+        [System.ComponentModel.DataAnnotations.Range(50, 700)]
         public double LaserWattage
         {
             get { return _laserWattage; }
@@ -20424,9 +20424,9 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Must be between 0.01 to 10 meters/second</summary>
+        /// <summary>Must be between 0.35 to 2.5 meters/second</summary>
         [Newtonsoft.Json.JsonProperty("scanSpeed", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(0, 10)]
+        [System.ComponentModel.DataAnnotations.Range(0, 2)]
         public double ScanSpeed
         {
             get { return _scanSpeed; }
@@ -20648,7 +20648,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>heater temperature in degrees kelvin</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperature", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(293D, 474D)]
+        [System.ComponentModel.DataAnnotations.Range(293.15D, 773.15D)]
         public double? HeaterTemperature
         {
             get { return _heaterTemperature; }
@@ -20863,7 +20863,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -26926,7 +26926,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Array of laser power values to simulate across. Each value must be 10 to 1000 watts</summary>
+        /// <summary>Array of laser power values to simulate across. Each value must be 50 to 700 watts</summary>
         [Newtonsoft.Json.JsonProperty("laserWattageValues", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.ObjectModel.ObservableCollection<double> LaserWattageValues
         {
@@ -26941,7 +26941,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Array of scan speed values to simulate across. Each value must be 0.01 to 10 meters/second</summary>
+        /// <summary>Array of scan speed values to simulate across. Each value must be 0.35 to 2.5 meters/second</summary>
         [Newtonsoft.Json.JsonProperty("scanSpeedValues", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.ObjectModel.ObservableCollection<double> ScanSpeedValues
@@ -26989,7 +26989,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Array of printer heater temperature values in degrees kelvin. Each value must be 293 and 474.</summary>
+        /// <summary>Array of printer heater temperature values in degrees kelvin. Each value must be 293.15 and 773.15.</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperatureValues", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.ObjectModel.ObservableCollection<double> HeaterTemperatureValues
         {
@@ -27068,7 +27068,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }
@@ -27420,7 +27420,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Array of laser power values to simulate across. Each value must be 10 to 1000 watts</summary>
+        /// <summary>Array of laser power values to simulate across. Each value must be 50 to 700 watts</summary>
         [Newtonsoft.Json.JsonProperty("laserWattageValues", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.ObjectModel.ObservableCollection<double> LaserWattageValues
         {
@@ -27435,7 +27435,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Array of scan speed values to simulate across. Each value must be 0.01 to 10 meters/second</summary>
+        /// <summary>Array of scan speed values to simulate across. Each value must be 0.35 to 2.5 meters/second</summary>
         [Newtonsoft.Json.JsonProperty("scanSpeedValues", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.ObjectModel.ObservableCollection<double> ScanSpeedValues
@@ -27483,7 +27483,7 @@ namespace SimulationCSharpClient.Client
             }
         }
     
-        /// <summary>Array of printer heater temperature values in degrees kelvin. Each value must be 293 and 474.</summary>
+        /// <summary>Array of printer heater temperature values in degrees kelvin. Each value must be 293.15 and 773.15.</summary>
         [Newtonsoft.Json.JsonProperty("heaterTemperatureValues", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.ObjectModel.ObservableCollection<double> HeaterTemperatureValues
         {
@@ -27562,7 +27562,7 @@ namespace SimulationCSharpClient.Client
     
         /// <summary>diameter of laser beam in meters</summary>
         [Newtonsoft.Json.JsonProperty("beamDiameter", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Range(8E-05D, 0.00012D)]
+        [System.ComponentModel.DataAnnotations.Range(1E-05D, 0.00014D)]
         public double BeamDiameter
         {
             get { return _beamDiameter; }

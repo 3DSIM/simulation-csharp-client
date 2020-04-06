@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.58.0",
+    "version": "3.59.1",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -191,14 +191,14 @@
             "name": "lookup",
             "in": "formData",
             "type": "file",
-            "description": "csv file defining columns T(in Kelvins), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio",
+            "description": "csv file defining columns Temperature (K), Thermal Conductivity (W/m/K), Specific Heat (J/kg/K), Density (kg/m3), Thermal Conductivity Ratio, Density Ratio, Specific Heat Ratio",
             "required": true
           },
           {
-            "name": "w0lookup",
+            "name": "cwlookup",
             "in": "formData",
             "type": "file",
-            "description": "csv file defining columns Speed (mm/s), Power (W), W0 (m)",
+            "description": "csv file defining columns Speed (mm/s), Power (W), CW (m)",
             "required": true
           },
           {
@@ -7468,15 +7468,15 @@
         "heaterTemperature": {
           "description": "heater temperature in degrees kelvin",
           "type": "number",
-          "minimum": 293,
-          "maximum": 474,
+          "minimum": 293.15,
+          "maximum": 773.15,
           "format": "double"
         },
         "beamDiameter": {
           "description": "diameter of laser beam in meters",
           "type": "number",
-          "minimum": 0.00008,
-          "maximum": 0.00012,
+          "minimum": 0.00001,
+          "maximum": 0.00014,
           "format": "double"
         }
       }
@@ -7614,15 +7614,15 @@
         "heaterTemperature": {
           "description": "heater temperature in degrees kelvin",
           "type": "number",
-          "minimum": 293,
-          "maximum": 474,
+          "minimum": 293.15,
+          "maximum": 773.15,
           "format": "double"
         },
         "beamDiameter": {
           "description": "diameter of laser beam in meters",
           "type": "number",
-          "minimum": 0.00008,
-          "maximum": 0.00012,
+          "minimum": 0.00001,
+          "maximum": 0.00014,
           "format": "double"
         }
       }
@@ -7989,16 +7989,16 @@
           "maximum": 0.001
         },
         "laserWattage": {
-          "description": "Must be between 10 to 1000 watts",
+          "description": "Must be between 50 to 700 watts",
           "type": "number",
-          "minimum": 10,
-          "maximum": 1000
+          "minimum": 50,
+          "maximum": 700
         },
         "scanSpeed": {
-          "description": "Must be between 0.01 to 10 meters/second",
+          "description": "Must be between 0.35 to 2.5 meters/second",
           "type": "number",
-          "minimum": 0.01,
-          "maximum": 10
+          "minimum": 0.35,
+          "maximum": 2.5
         },
         "slicingStripeWidth": {
           "description": "Must be between 0.001 to 0.1 meters",
@@ -8061,8 +8061,8 @@
         "heaterTemperature": {
           "description": "heater temperature in degrees kelvin",
           "type": "number",
-          "minimum": 293,
-          "maximum": 474,
+          "minimum": 293.15,
+          "maximum": 773.15,
           "format": "double"
         },
         "outputInstantDynamicSensor": {
@@ -8139,8 +8139,8 @@
         "beamDiameter": {
           "description": "diameter of laser beam in meters",
           "type": "number",
-          "minimum": 0.00008,
-          "maximum": 0.00012,
+          "minimum": 0.00001,
+          "maximum": 0.00014,
           "format": "double"
         }
       }
@@ -9777,25 +9777,25 @@
           }
         },
         "laserWattageValues": {
-          "description": "Array of laser power values to simulate across. Each value must be 10 to 1000 watts",
+          "description": "Array of laser power values to simulate across. Each value must be 50 to 700 watts",
           "type": "array",
           "items": {
             "type": "number",
             "format": "float32",
-            "minimum": 10,
-            "maximum": 1000,
+            "minimum": 50,
+            "maximum": 700,
             "exclusiveMinimum": false,
             "exclusiveMaximum": false
           }
         },
         "scanSpeedValues": {
-          "description": "Array of scan speed values to simulate across. Each value must be 0.01 to 10 meters/second",
+          "description": "Array of scan speed values to simulate across. Each value must be 0.35 to 2.5 meters/second",
           "type": "array",
           "items": {
             "type": "number",
             "format": "float32",
-            "minimum": 0.01,
-            "maximum": 10,
+            "minimum": 0.35,
+            "maximum": 2.5,
             "exclusiveMinimum": false,
             "exclusiveMaximum": false
           }
@@ -9825,13 +9825,13 @@
           }
         },
         "heaterTemperatureValues": {
-          "description": "Array of printer heater temperature values in degrees kelvin. Each value must be 293 and 474.",
+          "description": "Array of printer heater temperature values in degrees kelvin. Each value must be 293.15 and 773.15.",
           "type": "array",
           "items": {
             "type": "number",
             "format": "float32",
-            "minimum": 293,
-            "maximum": 474,
+            "minimum": 293.15,
+            "maximum": 773.15,
             "exclusiveMinimum": false,
             "exclusiveMaximum": false
           }
@@ -9861,8 +9861,8 @@
         "beamDiameter": {
           "description": "diameter of laser beam in meters",
           "type": "number",
-          "minimum": 0.00008,
-          "maximum": 0.00012,
+          "minimum": 0.00001,
+          "maximum": 0.00014,
           "format": "double"
         }
       }

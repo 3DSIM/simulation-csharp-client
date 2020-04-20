@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.59.1",
+    "version": "3.60.0",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -820,13 +820,16 @@
             "in": "query",
             "description": "If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.",
             "required": false,
-            "type": "string",
-            "enum": [
-              "Uploaded",
-              "Processing",
-              "Available",
-              "Error"
-            ]
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Uploaded",
+                "Processing",
+                "Available",
+                "Error"
+              ]
+            }
           },
           {
             "name": "archived",
@@ -1757,6 +1760,110 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "simulationSecurity": [
+              "read:parts"
+            ]
+          }
+        ]
+      }
+    },
+    "/supports": {
+      "get": {
+        "description": "Get list of supports",
+        "operationId": "getPartSupports",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "query",
+            "description": "the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "starting paging count; ex. 60 will skip the first 60 items in the list",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "number of items to return within the query",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc",
+            "required": false,
+            "type": "array",
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "availability",
+            "in": "query",
+            "description": "If specified, will filter to only include supports with the given availability. If an array of items is sent, they are treated as \"OR\" operations. Uploaded - the support has been uploaded.  Processing - the support is being processed.  Available - the support was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Uploaded",
+                "Processing",
+                "Available",
+                "Error"
+              ]
+            }
+          },
+          {
+            "name": "archived",
+            "in": "query",
+            "description": "If true, will only return archived support.  If false, will only return unarchived support.  If not provided, will return both archived and unarchived support.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found the list of support",
+            "headers": {
+              "X-Pagination": {
+                "type": "string",
+                "description": "Contains paging information in json format - totalCount, totalPages"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PartSupport"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           },
           "default": {
             "description": "unexpected error",

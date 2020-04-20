@@ -182,7 +182,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="archived">If true, will only return archived parts.  If false, will only return unarchived parts.  If not provided, will return both archived and unarchived parts.</param>
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, Availability? availability, bool? archived);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous> availability, bool? archived);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
@@ -193,7 +193,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, Availability? availability, bool? archived, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous> availability, bool? archived, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="part">Part to add. First, call parts/geometryurl to get a PartUploadRequest object. PUT the STL file AmazonS3 with the signed URL. Use the s3Key property as the value of fileLocation. A POST with this object will execute the part processing service.</param>
         /// <returns>Successfully added a part</returns>
@@ -402,6 +402,27 @@ namespace SimulationCSharpClient.Client
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<GeometryTriangle>> PartSupportGeometryAsync(int partId, int supportId, System.Threading.CancellationToken cancellationToken);
     
+        /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
+        /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
+        /// <param name="limit">number of items to return within the query</param>
+        /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
+        /// <param name="availability">If specified, will filter to only include supports with the given availability. If an array of items is sent, they are treated as "OR" operations. Uploaded - the support has been uploaded.  Processing - the support is being processed.  Available - the support was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
+        /// <param name="archived">If true, will only return archived support.  If false, will only return unarchived support.  If not provided, will return both archived and unarchived support.</param>
+        /// <returns>Successfully found the list of support</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PartSupport>> GetPartSupportsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous2> availability, bool? archived);
+    
+        /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
+        /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
+        /// <param name="limit">number of items to return within the query</param>
+        /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
+        /// <param name="availability">If specified, will filter to only include supports with the given availability. If an array of items is sent, they are treated as "OR" operations. Uploaded - the support has been uploaded.  Processing - the support is being processed.  Available - the support was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
+        /// <param name="archived">If true, will only return archived support.  If false, will only return unarchived support.  If not provided, will return both archived and unarchived support.</param>
+        /// <returns>Successfully found the list of support</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PartSupport>> GetPartSupportsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous2> availability, bool? archived, System.Threading.CancellationToken cancellationToken);
+    
         /// <param name="id">ID of support to get</param>
         /// <returns>Successfully found a support</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -493,7 +514,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="requiresLicense">returns simulations that require licence</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -509,7 +530,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Successfully retrieved simulation</returns>
@@ -564,7 +585,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous2> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -574,7 +595,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous2> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -716,7 +737,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -726,7 +747,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="porositySimulation">PorositySimulation fields required to add the simulation</param>
         /// <returns>Successfully added a simulation</returns>
@@ -781,7 +802,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -791,7 +812,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Simulation was successfully cancelled.</returns>
@@ -822,7 +843,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -832,7 +853,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="singleBeadSimulation">SingleBeadSimulation fields required to add the simulation</param>
         /// <returns>Successfully added a simulation</returns>
@@ -887,7 +908,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -897,7 +918,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Simulation was successfully cancelled.</returns>
@@ -928,7 +949,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -938,7 +959,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="thermalSimulation">ThermalSimulation fields required to add a simulation</param>
         /// <returns>Successfully added a simulation</returns>
@@ -993,7 +1014,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -1003,7 +1024,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Simulation was successfully cancelled.</returns>
@@ -1034,7 +1055,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -1044,7 +1065,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="scanPatternSimulation">ScanPatternSimulation fields required to add a simulation</param>
         /// <returns>Successfully added a simulation</returns>
@@ -1099,7 +1120,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -1109,7 +1130,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Simulation was successfully cancelled.</returns>
@@ -1140,7 +1161,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous13> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -1150,7 +1171,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous13> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="assumedStrainSimulation">AssumedStrainSimulation fields required to add a simulation</param>
         /// <returns>Successfully added a simulation</returns>
@@ -1205,7 +1226,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous14> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -1215,7 +1236,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous14> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Simulation was successfully cancelled.</returns>
@@ -1258,7 +1279,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="availability">availability value of build files to return, valid values: Uploaded, Processing, Available, Error</param>
         /// <returns>Successfully retrieved list of build files</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous13> availability);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous15> availability);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
@@ -1269,7 +1290,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully retrieved list of build files</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous13> availability, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous15> availability, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="buildFilePost">build file to add</param>
         /// <returns>Build file that was successfully added</returns>
@@ -1368,7 +1389,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous14> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous16> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
         /// <param name="status">simulation status for items retrieved.  If an array of items is sent, they are treated as "OR" operations. e.g. status=InProgress,Requested would yield a list of simulations that are in either state.</param>
@@ -1378,7 +1399,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous14> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous16> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="microstructureSimulation">MicrostructureSimulation fields required to add the simulation</param>
         /// <returns>Successfully added a simulation</returns>
@@ -1448,7 +1469,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous15> status, System.Collections.Generic.IEnumerable<string> sort);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous17> status, System.Collections.Generic.IEnumerable<string> sort);
     
         /// <param name="id">simulation identifier</param>
         /// <param name="offset">starting paging count; ex. offset of 60 will skip the first 60 items in the list</param>
@@ -1458,7 +1479,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous15> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous17> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken);
     
         /// <param name="id">simulation identifier</param>
         /// <returns>Simulation was successfully cancelled.</returns>
@@ -3095,7 +3116,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="archived">If true, will only return archived parts.  If false, will only return unarchived parts.  If not provided, will return both archived and unarchived parts.</param>
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, Availability? availability, bool? archived)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous> availability, bool? archived)
         {
             return GetPartsAsync(organizationId, offset, limit, sort, availability, archived, System.Threading.CancellationToken.None);
         }
@@ -3109,7 +3130,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of parts</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, Availability? availability, bool? archived, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Part>> GetPartsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous> availability, bool? archived, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -3120,7 +3141,7 @@ namespace SimulationCSharpClient.Client
             if (offset != null) urlBuilder_.Append("offset=").Append(System.Uri.EscapeDataString(System.Convert.ToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (limit != null) urlBuilder_.Append("limit=").Append(System.Uri.EscapeDataString(System.Convert.ToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (sort != null) foreach (var item_ in sort) { urlBuilder_.Append("sort=").Append(System.Uri.EscapeDataString(System.Convert.ToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append("&"); }
-            if (availability != null) urlBuilder_.Append("availability=").Append(System.Uri.EscapeDataString(System.Convert.ToString(availability, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (availability != null) foreach (var item_ in availability) { urlBuilder_.Append("availability=").Append(System.Uri.EscapeDataString(System.Convert.ToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append("&"); }
             if (archived != null) urlBuilder_.Append("archived=").Append(System.Uri.EscapeDataString(System.Convert.ToString(archived, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
     
@@ -5188,6 +5209,124 @@ namespace SimulationCSharpClient.Client
             }
         }
     
+        /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
+        /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
+        /// <param name="limit">number of items to return within the query</param>
+        /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
+        /// <param name="availability">If specified, will filter to only include supports with the given availability. If an array of items is sent, they are treated as "OR" operations. Uploaded - the support has been uploaded.  Processing - the support is being processed.  Available - the support was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
+        /// <param name="archived">If true, will only return archived support.  If false, will only return unarchived support.  If not provided, will return both archived and unarchived support.</param>
+        /// <returns>Successfully found the list of support</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PartSupport>> GetPartSupportsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous2> availability, bool? archived)
+        {
+            return GetPartSupportsAsync(organizationId, offset, limit, sort, availability, archived, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="organizationId">the organization id to get items for.  Must be provided as API callers only have access to items belonging to their organization.</param>
+        /// <param name="offset">starting paging count; ex. 60 will skip the first 60 items in the list</param>
+        /// <param name="limit">number of items to return within the query</param>
+        /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
+        /// <param name="availability">If specified, will filter to only include supports with the given availability. If an array of items is sent, they are treated as "OR" operations. Uploaded - the support has been uploaded.  Processing - the support is being processed.  Available - the support was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</param>
+        /// <param name="archived">If true, will only return archived support.  If false, will only return unarchived support.  If not provided, will return both archived and unarchived support.</param>
+        /// <returns>Successfully found the list of support</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PartSupport>> GetPartSupportsAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Collections.Generic.IEnumerable<Anonymous2> availability, bool? archived, System.Threading.CancellationToken cancellationToken)
+        {
+            if (organizationId == null)
+                throw new System.ArgumentNullException("organizationId");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/supports?");
+            urlBuilder_.Append("organizationId=").Append(System.Uri.EscapeDataString(System.Convert.ToString(organizationId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (offset != null) urlBuilder_.Append("offset=").Append(System.Uri.EscapeDataString(System.Convert.ToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (limit != null) urlBuilder_.Append("limit=").Append(System.Uri.EscapeDataString(System.Convert.ToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (sort != null) foreach (var item_ in sort) { urlBuilder_.Append("sort=").Append(System.Uri.EscapeDataString(System.Convert.ToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append("&"); }
+            if (availability != null) foreach (var item_ in availability) { urlBuilder_.Append("availability=").Append(System.Uri.EscapeDataString(System.Convert.ToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append("&"); }
+            if (archived != null) urlBuilder_.Append("archived=").Append(System.Uri.EscapeDataString(System.Convert.ToString(archived, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        foreach (var item_ in response_.Content.Headers)
+                            headers_[item_.Key] = item_.Value;
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var responseData_ = await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            var result_ = default(System.Collections.ObjectModel.ObservableCollection<PartSupport>); 
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Collections.ObjectModel.ObservableCollection<PartSupport>>(responseData_, _settings.Value);
+                                return result_; 
+                            } 
+                            catch (System.Exception exception_) 
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", status_, responseData_, headers_, exception_);
+                            }
+                        }
+                        else
+                        if (status_ == "403") 
+                        {
+                            var responseData_ = await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            var result_ = default(Error); 
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Error>(responseData_, _settings.Value);
+                            } 
+                            catch (System.Exception exception_) 
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", status_, responseData_, headers_, exception_);
+                            }
+                            throw new SwaggerException<Error>("Forbidden", status_, responseData_, headers_, result_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            var result_ = default(Error); 
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Error>(responseData_, _settings.Value);
+                            } 
+                            catch (System.Exception exception_) 
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", status_, responseData_, headers_, exception_);
+                            }
+                            throw new SwaggerException<Error>("unexpected error", status_, responseData_, headers_, result_, null);
+                        }
+            
+                        return default(System.Collections.ObjectModel.ObservableCollection<PartSupport>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
         /// <param name="id">ID of support to get</param>
         /// <returns>Successfully found a support</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -5890,7 +6029,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="requiresLicense">returns simulations that require licence</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense)
         {
             return GetSimulationsAsync(organizationId, status, offset, limit, sort, archived, partId, supportId, buildFileId, isParent, requiresLicense, System.Threading.CancellationToken.None);
         }
@@ -5909,7 +6048,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, int? partId, int? supportId, int? buildFileId, bool? isParent, bool? requiresLicense, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -6551,7 +6690,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous2> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetSimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -6564,7 +6703,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous2> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Simulation>> GetSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7822,7 +7961,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetPorositySimulationsAsync(organizationId, status, offset, limit, sort, System.Threading.CancellationToken.None);
         }
@@ -7835,7 +7974,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous3> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -8432,7 +8571,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetPorositySimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -8445,7 +8584,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous4> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<PorositySimulation>> GetPorositySimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -8804,7 +8943,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetSingleBeadSimulationsAsync(organizationId, status, offset, limit, sort, System.Threading.CancellationToken.None);
         }
@@ -8817,7 +8956,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous5> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -9414,7 +9553,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetSingleBeadSimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -9427,7 +9566,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous6> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<SingleBeadSimulation>> GetSingleBeadSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -9786,7 +9925,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetThermalSimulationsAsync(organizationId, status, offset, limit, sort, System.Threading.CancellationToken.None);
         }
@@ -9799,7 +9938,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous7> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -10396,7 +10535,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetThermalSimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -10409,7 +10548,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous8> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ThermalSimulation>> GetThermalSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -10768,7 +10907,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetScanPatternSimulationsAsync(organizationId, status, offset, limit, sort, System.Threading.CancellationToken.None);
         }
@@ -10781,7 +10920,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous9> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -11378,7 +11517,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetScanPatternSimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -11391,7 +11530,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous10> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ScanPatternSimulation>> GetScanPatternSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -11750,7 +11889,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous13> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetAssumedStrainSimulationsAsync(organizationId, status, offset, limit, sort, System.Threading.CancellationToken.None);
         }
@@ -11763,7 +11902,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous11> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous13> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -12360,7 +12499,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous14> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetAssumedStrainSimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -12373,7 +12512,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous12> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AssumedStrainSimulation>> GetAssumedStrainSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous14> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -12856,7 +12995,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="availability">availability value of build files to return, valid values: Uploaded, Processing, Available, Error</param>
         /// <returns>Successfully retrieved list of build files</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous13> availability)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous15> availability)
         {
             return GetBuildFilesAsync(organizationId, offset, limit, sort, archived, availability, System.Threading.CancellationToken.None);
         }
@@ -12870,7 +13009,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully retrieved list of build files</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous13> availability, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<BuildFile>> GetBuildFilesAsync(int organizationId, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, bool? archived, System.Collections.Generic.IEnumerable<Anonymous15> availability, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -13929,7 +14068,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous14> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous16> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetMicrostructureSimulationsAsync(organizationId, status, offset, limit, sort, System.Threading.CancellationToken.None);
         }
@@ -13942,7 +14081,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous14> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationsAsync(int organizationId, System.Collections.Generic.IEnumerable<Anonymous16> status, int? offset, int? limit, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (organizationId == null)
                 throw new System.ArgumentNullException("organizationId");
@@ -14682,7 +14821,7 @@ namespace SimulationCSharpClient.Client
         /// <param name="sort">key:direction pairs for one or multiple field sort orders.  e.g. sort=key1:desc,key2:asc</param>
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous15> status, System.Collections.Generic.IEnumerable<string> sort)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous17> status, System.Collections.Generic.IEnumerable<string> sort)
         {
             return GetMicrostructureSimulationChildrenAsync(id, offset, limit, status, sort, System.Threading.CancellationToken.None);
         }
@@ -14695,7 +14834,7 @@ namespace SimulationCSharpClient.Client
         /// <returns>Successfully found the list of items</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous15> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<MicrostructureSimulation>> GetMicrostructureSimulationChildrenAsync(int id, int? offset, int? limit, System.Collections.Generic.IEnumerable<Anonymous17> status, System.Collections.Generic.IEnumerable<string> sort, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -27596,9 +27735,8 @@ namespace SimulationCSharpClient.Client
         }
     }
     
-    /// <summary>If specified, will filter to only include parts with the given availability.  Uploaded - the part has been uploaded.  Processing - the part is being processed.  Available - the part was processed successfully and can be used in simulations.  Error - an error occurred, contact Ansys Support.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
-    public enum Availability
+    public enum Anonymous
     {
         [System.Runtime.Serialization.EnumMember(Value = "Uploaded")]
         Uploaded = 0,
@@ -27615,48 +27753,19 @@ namespace SimulationCSharpClient.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
-    public enum Anonymous
-    {
-        [System.Runtime.Serialization.EnumMember(Value = "Draft")]
-        Draft = 0,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "Requested")]
-        Requested = 1,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "InProgress")]
-        InProgress = 2,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "Cancelled")]
-        Cancelled = 3,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "Error")]
-        Error = 4,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "Success")]
-        Success = 5,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
     public enum Anonymous2
     {
-        [System.Runtime.Serialization.EnumMember(Value = "Draft")]
-        Draft = 0,
+        [System.Runtime.Serialization.EnumMember(Value = "Uploaded")]
+        Uploaded = 0,
     
-        [System.Runtime.Serialization.EnumMember(Value = "Requested")]
-        Requested = 1,
+        [System.Runtime.Serialization.EnumMember(Value = "Processing")]
+        Processing = 1,
     
-        [System.Runtime.Serialization.EnumMember(Value = "InProgress")]
-        InProgress = 2,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "Cancelled")]
-        Cancelled = 3,
+        [System.Runtime.Serialization.EnumMember(Value = "Available")]
+        Available = 2,
     
         [System.Runtime.Serialization.EnumMember(Value = "Error")]
-        Error = 4,
-    
-        [System.Runtime.Serialization.EnumMember(Value = "Success")]
-        Success = 5,
+        Error = 3,
     
     }
     
@@ -27893,17 +28002,23 @@ namespace SimulationCSharpClient.Client
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
     public enum Anonymous13
     {
-        [System.Runtime.Serialization.EnumMember(Value = "Uploaded")]
-        Uploaded = 0,
+        [System.Runtime.Serialization.EnumMember(Value = "Draft")]
+        Draft = 0,
     
-        [System.Runtime.Serialization.EnumMember(Value = "Processing")]
-        Processing = 1,
+        [System.Runtime.Serialization.EnumMember(Value = "Requested")]
+        Requested = 1,
     
-        [System.Runtime.Serialization.EnumMember(Value = "Available")]
-        Available = 2,
+        [System.Runtime.Serialization.EnumMember(Value = "InProgress")]
+        InProgress = 2,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Cancelled")]
+        Cancelled = 3,
     
         [System.Runtime.Serialization.EnumMember(Value = "Error")]
-        Error = 3,
+        Error = 4,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Success")]
+        Success = 5,
     
     }
     
@@ -27932,6 +28047,46 @@ namespace SimulationCSharpClient.Client
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
     public enum Anonymous15
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "Uploaded")]
+        Uploaded = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Processing")]
+        Processing = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Available")]
+        Available = 2,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Error")]
+        Error = 3,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum Anonymous16
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "Draft")]
+        Draft = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Requested")]
+        Requested = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "InProgress")]
+        InProgress = 2,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Cancelled")]
+        Cancelled = 3,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Error")]
+        Error = 4,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "Success")]
+        Success = 5,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum Anonymous17
     {
         [System.Runtime.Serialization.EnumMember(Value = "Draft")]
         Draft = 0,

@@ -28343,6 +28343,9 @@ namespace SimulationCSharpClient.Client
         [System.Runtime.Serialization.EnumMember(Value = "Trumpf")]
         Trumpf = 5,
     
+        [System.Runtime.Serialization.EnumMember(Value = "Sisma")]
+        Sisma = 6,
+    
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.6.0 (Newtonsoft.Json v9.0.0.0)")]

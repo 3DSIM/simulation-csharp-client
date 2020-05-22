@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.61.0",
+    "version": "3.62.0",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -9337,7 +9337,8 @@
             "ThreeDSystems",
             "EOS",
             "Trumpf",
-            "Sisma"
+            "Sisma",
+            "HB3D"
           ]
         },
         "materialType": {

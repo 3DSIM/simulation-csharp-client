@@ -28345,6 +28345,9 @@ namespace SimulationCSharpClient.Client
     
         [System.Runtime.Serialization.EnumMember(Value = "Sisma")]
         Sisma = 6,
+
+        [System.Runtime.Serialization.EnumMember(Value = "HB3D")]
+        HB3D = 7,
     
     }
     

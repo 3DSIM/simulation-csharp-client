@@ -23245,6 +23245,7 @@ namespace SimulationCSharpClient.Client
         private double? _penetrationDepthMaximum;
         private double? _powderPackingDensity;
         private string _w0LookupFileLocation;
+        private double _strainScalingFactor;
     
         /// <summary>material configuration identifier</summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -23781,6 +23782,20 @@ namespace SimulationCSharpClient.Client
                 if (_w0LookupFileLocation != value)
                 {
                     _w0LookupFileLocation = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        [Newtonsoft.Json.JsonProperty("strainScalingFactor", Required = Newtonsoft.Json.Required.Always)]
+        public double StrainScalingFactor
+        {
+            get { return _strainScalingFactor; }
+            set 
+            {
+                if (_strainScalingFactor != value)
+                {
+                    _strainScalingFactor = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -28345,7 +28360,7 @@ namespace SimulationCSharpClient.Client
     
         [System.Runtime.Serialization.EnumMember(Value = "Sisma")]
         Sisma = 6,
-
+    
         [System.Runtime.Serialization.EnumMember(Value = "HB3D")]
         HB3D = 7,
     

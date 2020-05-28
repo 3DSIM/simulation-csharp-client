@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "3.62.0",
+    "version": "3.62.1",
     "title": "Simulation API",
     "description": "An API for managing simulations within ANSYS Additive."
   },
@@ -8663,7 +8663,8 @@
         "anisotropicStrainCoefficientZ",
         "hardeningFactor",
         "nucleationConstantInterface",
-        "nucleationConstantBulk"
+        "nucleationConstantBulk",
+        "strainScalingFactor"
       ],
       "properties": {
         "id": {
@@ -8820,6 +8821,10 @@
         "w0LookupFileLocation": {
           "type": "string",
           "description": "Location where tuning method lookup file is stored. Set server side. Only used internally."
+        },
+        "strainScalingFactor": {
+          "type": "number",
+          "format": "double"
         }
       }
     },

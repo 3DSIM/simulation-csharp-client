@@ -1,9 +1,9 @@
 #!/bin/bash -e
+
 RUN_TEST=0
-CLEAN=0
 CONFIGURATION=Release
-PUBLISH_DIR=publish
-SRC_DIR=src/SimulationCSharpClient
+PACKAGE_DIR=package
+PROJECT=SimulationCSharpClient
 
 die() {
   echo "ERROR: ${@}" 1>&2
@@ -20,12 +20,10 @@ show_help() {
   echo "    Build with debugging information."
   echo "  -h | --help"
   echo "    Show this help page."
-  echo "  --pub-dir=<publish_directory>"
-  echo "    Publish output to specified directory, relative to src/BuildFileProcessor [${PUBLISH_DIR}]"
+  echo "  --pkg-dir=<publish_directory>"
+  echo "    Publish output to specified directory [${PUBLISH_DIR}]. Relative path will be under src/Azure."
   echo "  --test"
   echo "    Build and execute unit tests."
-  echo "  --clean"
-  echo "    Remove all build artifacts"
   echo ""
 }
 
@@ -40,17 +38,13 @@ for i in "${@}"; do
     show_help
     exit 0
     ;;
-    # pub-dir
-    --pub-dir=*)
-    PUBLISH_DIR="${i#*=}"
+    # pkg-dir
+    --pkg-dir=*)
+    PACKAGE_DIR="${i#*=}"
     ;;
     # testing
     --test)
     RUN_TEST=1
-    ;;
-    # clean
-    --clean)
-    CLEAN=1
     ;;
     # bad argument
     *)
@@ -59,24 +53,12 @@ for i in "${@}"; do
   esac
 done
 
-rm -rf src/*/${PUBLISH_DIR}
-dotnet publish -c ${CONFIGURATION} -o ${PUBLISH_DIR} ${SRC_DIR}
 if [[ "${RUN_TEST}" == "1" ]]; then
-
-  # before testing make sure that the version numbers match
-  propertiesVersionContent=$(<version.properties)
-  propertiesVersion=${propertiesVersionContent#*=}
-  csprojVersion=`grep -oPm1 "(?<=<Version>)[^<]+" src/SimulationCSharpClient/SimulationCSharpClient.csproj`
-  if [[ "${propertiesVersion}" != "${csprojVersion}" ]]; then
-    die "The csproj version '${csprojVersion}' must match the version.properties '${propertiesVersion}'"
-  fi
-
-  for d in test/*; do
-    dotnet test ${d}
+  echo "Running tests..."
+  for t in test/*.Tests; do
+    dotnet test ${t}
   done
 fi
-if [[ "${CLEAN}" == "1" ]]; then
-  dotnet clean
-  rm -rf src/*/bin src/*/obj src/*/${PUBLISH_DIR}
-  rm -rf test/*/bin test/*/obj
-fi
+
+echo "Building nuget package"
+dotnet pack -c ${CONFIGURATION} -o ${PACKAGE_DIR} src/${PROJECT}

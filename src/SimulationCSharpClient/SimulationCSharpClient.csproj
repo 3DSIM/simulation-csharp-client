@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Version>3.62.1</Version>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <Version>4.0.0</Version>
+        <TargetFramework>net5.0</TargetFramework>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <AssemblyName>SimulationCSharpClient</AssemblyName>
         <PackageId>SimulationCSharpClient</PackageId>
@@ -10,10 +10,6 @@
         <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
         <CodeAnalysisRuleSet>../../customStylecop.ruleset</CodeAnalysisRuleSet>
         <Authors />
-        <PackageProjectUrl>https://github.com/3DSIM/simulation-csharp-client</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/3DSIM/simulation-csharp-client</RepositoryUrl>
-        <Description>C# Client for interacting with the 3DSIM simulation api</Description>
-        <PackageLicenseUrl>https://github.com/3DSIM/simulation-csharp-client/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
     <ItemGroup>
         <AdditionalFiles Include="../../stylecop.json">
@@ -25,7 +21,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
         <PackageReference Include="Polly" Version="7.0.2" />
     </ItemGroup>
 </Project>
